@@ -1,0 +1,7 @@
+services:
+  web:
+    image: simple_golang_image
+    build:
+      context: .
+      dockerfile: web.dockerfile
+    container_name: simple_golang_container
