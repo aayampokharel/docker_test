@@ -1,5 +1,6 @@
-FROM golang:1.25.4-alpine3.22 AS Builder
+FROM golang:1.25.4-alpine3.22 AS builder 
+# OS base,go compiler , go toolchain,etc etc 
 WORKDIR /app
 COPY . . 
-RUN go mod download && go build -o server
-CMD ["./server"]
+RUN go mod download 
+CMD ["go", "run","."]

@@ -6,4 +6,6 @@ services:
     image: docker_example
     ports:
       - "8000:8080"
+    volumes:
+      - .:/app
     container_name: example_container
