@@ -4,4 +4,4 @@ services:
       context: .
       dockerfile: web.dockerfile
     ports:
-      - "8000:8080"
+      - "${HOST_PORT}:${LISTEN_PORT}"
