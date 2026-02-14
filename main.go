@@ -2,20 +2,32 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 
-	"github.com/google/uuid"
+	"github.com/spf13/viper"
 )
 
 func main() {
 	fmt.Println("=============================")
 	fmt.Println("hello this is from docker PC and whats up a to the b")
 	fmt.Println("=============================")
-	fmt.Print(uuid.New().String()[:5])
+	viper.SetConfigFile(".env")
+	viper.AutomaticEnv()
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file: %s", err)
+	}
+	listenPort := viper.GetString("LISTEN_PORT")
+	hostPort := viper.GetString("HOST_PORT")
+	KEY := viper.GetString("KEY")
+	fmt.Printf("Server running on: %s\n", listenPort)
+	fmt.Printf("DB Connection: %s\n", hostPort)
+	fmt.Printf("DB Connection: %s\n", KEY)
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello world hello world heyyy whats up"))
 	})
-	er := http.ListenAndServe(":8080", nil)
+	er := http.ListenAndServe(":"+listenPort, nil)
 	if er != nil {
 		fmt.Println(er)
 	}

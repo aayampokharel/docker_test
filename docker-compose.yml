@@ -5,3 +5,5 @@ services:
       dockerfile: web.dockerfile
     ports:
       - "${HOST_PORT}:${LISTEN_PORT}"
+    env_file:
+      - .env
