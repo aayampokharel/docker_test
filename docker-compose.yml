@@ -3,3 +3,5 @@ services:
     build:
       context: .
       dockerfile: web.dockerfile
+    ports:
+      - "8000:8080"
