@@ -20,9 +20,11 @@ func main() {
 	listenPort := viper.GetString("LISTEN_PORT")
 	hostPort := viper.GetString("HOST_PORT")
 	KEY := viper.GetString("KEY")
+	SUBSTITUTE := viper.GetString("SUBSTITUTE")
 	fmt.Printf("Server running on: %s\n", listenPort)
 	fmt.Printf("DB Connection: %s\n", hostPort)
-	fmt.Printf("DB Connection: %s\n", KEY)
+	fmt.Printf("KEY: %s\n", KEY)
+	fmt.Printf("substitute example in .env file'SUBSTITUTE=localhost:${PORT}': %s\n", SUBSTITUTE)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello world hello world heyyy whats up"))
