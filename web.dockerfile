@@ -1,6 +1,6 @@
 FROM golang:1.26.0-alpine3.22 AS builder
 WORKDIR /app
-COPY go.mod go.sum ./
+COPY backend/go.mod backend/go.sum ./
 RUN ["go","mod","download"]
 COPY . . 
 RUN ["chmod","u+x","./cmd.sh"]

@@ -12,7 +12,7 @@ func main() {
 	fmt.Println("=============================")
 	fmt.Println("hello this is from docker PC and whats up a to the b")
 	fmt.Println("=============================")
-	viper.SetConfigFile(".env")
+	viper.SetConfigFile("../.env")
 	viper.AutomaticEnv()
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file: %s", err)
@@ -24,6 +24,8 @@ func main() {
 	fmt.Printf("Server running on: %s\n", listenPort)
 	fmt.Printf("DB Connection: %s\n", hostPort)
 	fmt.Printf("KEY: %s\n", KEY)
+	fmt.Printf("KEY::::: %s\n", KEY)
+	fmt.Printf("KEY::::: %s\n", KEY)
 	fmt.Printf("substitute example in .env file'SUBSTITUTE=localhost:${PORT}': %s\n", SUBSTITUTE)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

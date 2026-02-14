@@ -9,3 +9,5 @@ services:
       - LISTEN_PORT=${PORT}
       - HOST_PORT=${PORT}
       - KEY=${KEY}
+    volumes:
+      - ./backend:/app/backend
