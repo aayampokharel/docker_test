@@ -1,11 +1,13 @@
 services:
-  web:
+  builds:
     build:
       context: .
       dockerfile: web.dockerfile
-    image: docker_example
     ports:
-      - "8000:8080"
+      - "${PORT}:${PORT}"
+    environment:
+      - LISTEN_PORT=${PORT}
+      - HOST_PORT=${PORT}
+      - KEY=${KEY}
     volumes:
-      - .:/app
-    container_name: example_container
+      - ./backend:/app/backend

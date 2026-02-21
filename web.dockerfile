@@ -1,6 +1,7 @@
-FROM golang:1.25.4-alpine3.22 AS builder 
-# OS base,go compiler , go toolchain,etc etc 
+FROM golang:1.26.0-alpine3.22 AS builder
 WORKDIR /app
+COPY backend/go.mod backend/go.sum ./
+RUN ["go","mod","download"]
 COPY . . 
-RUN go mod download 
-CMD ["go", "run","."]
+RUN ["chmod","u+x","./cmd.sh"]
+CMD ["./cmd.sh"]
